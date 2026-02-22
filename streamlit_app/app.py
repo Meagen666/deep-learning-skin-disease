@@ -3,7 +3,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import streamlit as st
 import streamlit.components.v1 as components
-import tensorflow as tf
+from tflite_runtime.interpreter import Interpreter
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -289,4 +289,5 @@ else:
         st.experimental_rerun()
         
     else:
+
         render_dashboard(st.session_state.history[-1])

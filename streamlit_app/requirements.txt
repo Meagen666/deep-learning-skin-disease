@@ -1,5 +1,5 @@
 streamlit
-tflite-runtime
-numpy
+tensorflow==2.20.0
+numpy<2.0
 pandas
-Pillow
+pillow

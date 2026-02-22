@@ -3,4 +3,3 @@ tensorflow<2.11
 numpy<2.00
 
 pillow
-python-3.11

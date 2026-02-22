@@ -112,7 +112,14 @@ CLASS_NAMES = list(DISEASE_INFO.keys())
 
 @st.cache_resource
 def load_tflite_model():
-    interpreter = tf.lite.Interpreter(model_path="model.tflite")
+    base_dir = os.path.dirname(os.path.abspath(__file__))   # folder where app.py is
+    model_path = os.path.join(base_dir, "model.tflite")
+
+    if not os.path.exists(model_path):
+        # Shows exactly where it tried to look (super helpful on Streamlit Cloud)
+        raise FileNotFoundError(f"model.tflite not found at: {model_path}")
+
+    interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
     return interpreter
 
@@ -121,7 +128,7 @@ try:
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 except Exception as e:
-    st.error(f"❌ Model Error: {e}")
+    st.error(f"Model Error: {e}")
     st.stop()
 
 def preprocess_image(image, target_size=(224, 224)):
@@ -290,3 +297,4 @@ else:
         
     else:
         render_dashboard(st.session_state.history[-1])
+

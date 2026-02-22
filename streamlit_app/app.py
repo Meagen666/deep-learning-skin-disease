@@ -293,8 +293,9 @@ else:
         st.session_state.history.append(analysis_data)
         st.session_state.scan_completed = True
         
-        st.experimental_rerun()
+        st.rerun()
         
     else:
         render_dashboard(st.session_state.history[-1])
+
 

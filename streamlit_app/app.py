@@ -253,11 +253,11 @@ else:
                 step1, step2, step3 = st.empty(), st.empty(), st.empty()
                 
                 step1.markdown("⏳ Preprocessing image quality...")
-                time.sleep(1.0)
+                time.sleep(0.3)
                 step1.markdown("✅ **Preprocessing image quality**")
                 
                 step2.markdown("⏳ Extracting dermatological features...")
-                time.sleep(1.0)
+                time.sleep(0.3)
                 step2.markdown("✅ **Extracting dermatological features**")
                 
                 step3.markdown("⏳ Running deep learning classification...")
@@ -278,9 +278,9 @@ else:
                     "Probability (%)": output_data[top_3_indices] * 100
                 })
                 
-                time.sleep(0.5)
+                time.sleep(0.3)
                 step3.markdown("✅ **Running deep learning classification**")
-                time.sleep(0.5)
+                time.sleep(0.3)
 
         timestamp = time.strftime("%H:%M:%S")
         analysis_data = {
@@ -297,5 +297,6 @@ else:
         
     else:
         render_dashboard(st.session_state.history[-1])
+
 
 

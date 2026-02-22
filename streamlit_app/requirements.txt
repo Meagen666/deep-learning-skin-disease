@@ -1,4 +1,5 @@
 streamlit
 tflite-runtime
 numpy
+pandas
 Pillow
